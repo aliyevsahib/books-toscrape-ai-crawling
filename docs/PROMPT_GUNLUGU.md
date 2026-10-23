@@ -60,15 +60,19 @@ Her biri için AI'ın ne ürettiği, çalışıp çalışmadığı ve nasıl dü
 ---
 
 ### Prompt 5 — Teslim şekli
-**Prompt (karar kartı):** "Kodu GitHub'a mı yükleyelim, sadece zip mi olsun?" → **"Public GitHub repo + zip"** seçildi.
+**Prompt (karar kartı):** "Kodu GitHub'a mı yükleyelim, sadece zip mi olsun?" → **"Public GitHub repo + zip"** seçildi. Ardından: *"books-toscrape-ai-crawling repository-ni Readme-siz ekledim."*
 
-**AI ne üretti:** Hesabımdaki repoları listeledi ve bu proje için bir repo olmadığını gördü. Yeni repo oluşturma yetkisi olmadığını açıkça söyledi ve boş bir repo açmamı istedi.
-**Çalıştı mı:** <repo açıldıktan sonra doldurulacak>
+**AI ne üretti:** Hesabımdaki repoları listeledi ve bu proje için repo olmadığını gördü. Yeni repo oluşturma yetkisi olmadığını açıkça söyledi, boş bir repo açmamı istedi. Repo açılınca GitHub erişimiyle kodu ve dokümanları ilk commit olarak yükledi. Gerçek veri, grafikler ve çalıştırılmış notebook bilgisayarımdan ikinci commit olarak eklendi.
+**Çalıştı mı:** Evet. İlk denemede bilgisayarımdaki `pip install` adımı internet sorunu yüzünden `ReadTimeoutError: ... files.pythonhosted.org ... Read timed out` hatası verdi. AI kodu değiştirmeden durdu ve hatayı bildirdi. İnternet düzelince kaldığı yerden devam etti.
 
 ---
 
 ### Prompt 6 — Playwright MCP ile canlı doğrulama
-**Prompt:** <doldurulacak>
-**AI ne üretti:** <doldurulacak>
-**Çalıştı mı:** <doldurulacak>
-**Düzeltme:** İlk denemede Playwright MCP bilgisayarımda `'npx' is not recognized as an internal or external command` hatası verdi (Node.js kurulu değildi). <kurulum sonrası sonucu yaz>
+**Prompt:**
+> "Internet sorununu hallettim. Node.js kurulumunu ... senin söylediğin gibi yaptım. Eğer hazırsan devam edebilirsin."
+
+**AI ne üretti:** Playwright MCP (bilgisayarımdaki tarayıcı) ile canlı siteyi açtı. `validate.py` dosyasının seçtiği 5 rastgele kitabı ve "A Light in the Attic" kaydını liste sayfalarında buldu (istekler arası 0.6 sn bekleyerek), detay sayfalarından değerleri okudu ve CSV ile karşılaştırdı. 6/6 kitapta fiyat, puan, stok adedi ve kategori birebir aynı çıktı. Bir kitap sayfasının ekran görüntüsünü `docs/img/playwright_dogrulama.png` olarak kaydetti.
+**Çalıştı mı:** Evet, ama iki denemeden sonra.
+**Düzeltme:**
+1. İlk denemede Playwright MCP `'npx' is not recognized as an internal or external command` hatası verdi, çünkü Node.js kurulu değildi. Node.js LTS kurulup Claude uygulaması yeniden başlatılınca bağlandı.
+2. Ekran görüntüsünü doğrudan proje klasörüne kaydetmeye çalışınca `File access denied ... is outside allowed roots` hatası aldı. Playwright MCP sadece kendi geçici klasörüne yazabiliyor. Görüntüyü oraya kaydettikten sonra proje klasörüne kopyaladı.

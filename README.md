@@ -63,4 +63,5 @@ Deneme çalıştırmasından sonra tam çalıştırma öncesi `data/raw_books.js
 | 4) Prompt günlüğü | `docs/PROMPT_GUNLUGU.md` |
 | 5) Yansıma raporu | `docs/YANSIMA_RAPORU.md` |
 | Bonus: skill / kural dosyası | `.claude/skills/polite-scraper/SKILL.md`, `AGENTS.md`, `.cursor/rules/scraping.mdc`, `CLAUDE.md` |
+| Bonus: MCP | `docs/MCP_DOGRULAMA.md` (Playwright MCP ile canlı doğrulama, ekran görüntüsü) |
 | Plan | `docs/CRAWLING_PLANI.md`, `docs/EKSIKLER_VE_PLAN.md` |
