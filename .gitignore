@@ -1,0 +1,4 @@
+__pycache__/
+.venv/
+data/raw_books.jsonl
+.ipynb_checkpoints/
